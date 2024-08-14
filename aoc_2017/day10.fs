@@ -38,7 +38,7 @@ let part1() =
         result |> Seq.take 2 |> Seq.reduce((*))
     ans1
     
-let part2() =
+let generateKnotHashPt2 inp =
     let lengths = ((inp |> Seq.fold(fun acc x -> acc + (acc = "") ? ("", ",") + (int x).ToString()) "").Split "," |> Seq.map(int),
                    [17;31;73;47;23]) ||> Seq.append
     
@@ -51,11 +51,12 @@ let part2() =
             let updated_skip_size = skip_size + 1
             (updated_pos, updated_skip_size, updated_data)) (pos, skip_size, data)
                   
-                  
     let _, _, sparse_hash = seq {for i in 0..63 -> i} |> Seq.fold(fun (pos, skip_size, data) _ -> knot_hash pos skip_size data) (0, 0, data)
     let dense_hash = sparse_hash |> Array.splitInto 16 |> Seq.map(fun arr -> arr |> Seq.reduce((^^^)))
     let result = dense_hash |> Seq.map(fun x -> System.String.Format("{0:X2}", x).ToLower()) |> Seq.reduce((+))
     result
+    
+let part2() = generateKnotHashPt2 inp
 
 let solve() =
     printfn $"%A{part1()}"

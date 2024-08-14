@@ -2,7 +2,6 @@
 
 open System.Text
 
-
 let smapi x = x |> Seq.mapi(fun i x -> (i,x))
 
 let (?) is_true (a, b) = if is_true then a else b
