@@ -74,7 +74,7 @@ let solve () =
     id
     |> Seq.initInfinite
     |> Seq.map traverse
-    |> Seq.mapi (fun i x -> (i, x))
+    |> smapi
     |> Seq.takeWhile (fun (_, x) -> x.IsSome)
     |> Seq.last
     |> fst

@@ -1,6 +1,7 @@
 module aoc_2017.day16
 
 open System.IO
+open helpers
 
 type Instruction =
     | Spin of int
@@ -58,7 +59,7 @@ let solve () =
                         | Partner(l1, l2) -> swapLetter localAcc l1 l2)
                     acc)
             programsState
-        |> Seq.mapi(fun i x -> (i,x))
+        |> smapi
         |> Seq.takeWhile (fun (i, x) -> i = 0 || not (comp x programsState))
 
     let cycleLen = cycle |> Seq.length

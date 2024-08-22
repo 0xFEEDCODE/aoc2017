@@ -23,6 +23,7 @@
         <Compile Include="day14.fs" />
         <Compile Include="day15.fs" />
         <Compile Include="day16.fs" />
+        <Compile Include="day17.fs" />
         <Compile Include="Program.fs"/>
         <Content Include="day5.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>

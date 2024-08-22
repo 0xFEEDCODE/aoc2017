@@ -4,6 +4,7 @@ open System.Text
 
 let smapi x = x |> Seq.mapi(fun i x -> (i,x))
 
+let lw (a,b) = (lazy a, lazy b)
 let (?) is_true (a, b) = if is_true then a else b
 let ($) is_true (a : Lazy<'a>, b : Lazy<'a>) =
     if is_true then a.Force() else b.Force()
